@@ -103,6 +103,7 @@ void cardStructTest()
 	printCard(card);
 }
 
+
 int main()
 {
 	
@@ -110,13 +111,25 @@ int main()
 
 	using index_t = std::array<Card, 52>::size_type;
 
+	// to calculate the permutation level
+	int tmpSuit = 0;
+	int tmpRank = 0;
+
 	for (index_t ind = 0; ind < cardArray.size(); ind++)
 	{
+		tmpRank = ind % 4;
+		tmpSuit = (ind - tmpRank) / 4;
 
 		Card tmpCard;
-		tmpCard.rank = CardRank::RANK_2;
-		tmpCard.suit = CardSuit::CLUBS;
+		tmpCard.rank = static_cast<CardRank>(tmpRank);
+		tmpCard.suit = static_cast<CardSuit>(tmpSuit);
 		cardArray[ind] = tmpCard;
+	}
+
+
+	for (index_t ind = 0; ind < cardArray.size(); ind++)
+	{
+		printCard(cardArray[ind]);
 	}
 
 	return 0;
