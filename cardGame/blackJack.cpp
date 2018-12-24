@@ -303,7 +303,7 @@ bool playBlackjack()
 	// start with shuffled deck
 	shuffleDeck(cardArray);
 
-	printDeck(cardArray);
+	//printDeck(cardArray);
 
 	// initialise a pointer to the first card
 	Card *cardPtr = &cardArray[0];
@@ -357,26 +357,50 @@ bool playBlackjack()
 }
 
 
+bool anotherRound()
+{
+	using namespace std;
+	char usrInput;
+
+	cout << "Do you wish to continue? (y/n): ";
+	while ((!(cin >> usrInput)) || ((usrInput != 'y') && (usrInput != 'n')))
+	{
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
+		cin.clear();
+		cout << "Invalid output, please enter again: ";
+	}
+
+	if (usrInput == 'y')
+		return true;
+	else
+		std::cout << "Ok bye!\n";
+		return false;
+}
 
 
 int main()
 {
 	
 
-	// set random seed
+	//set random seed
 	std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
-	bool result = playBlackjack();
+	// welcome message
+	std::cout << "Welcome to ChiaChia's stingy Blackjack casino!\nYou won't win a penny from him!\n";
+	bool result;
+	do
+	{
+		result = playBlackjack();
 
-	if (result)
-	{
-		std::cout << "You win! \n";
-	}
-	else
-	{
-		std::cout << "You lose! \n";
-	}
-	
+		if (result)
+		{
+			std::cout << "you win! \n";
+		}
+		else
+		{
+			std::cout << "you lose! \n";
+		}
+	} while (anotherRound());
 
 	return 0;
 }
