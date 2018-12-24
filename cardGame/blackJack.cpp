@@ -8,11 +8,11 @@ Create enumerations for the card ranks (2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen,
 
 
 
-
 #include <iostream>
 #include <array>
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 
 
 enum class CardRank
@@ -247,6 +247,7 @@ int getCardValue(const Card &card)
 	case CardRank::RANK_KING: return 10;
 	case CardRank::RANK_ACE: return 10;
 	}
+	return 0;
 }
 
 
@@ -277,15 +278,27 @@ void testGetCardValue()
 }
 
 
-int main()
+bool hit() 
 {
-	
+	using namespace std;
+	cout << "Hit (y)?: ";
+	char usrInput;
+	while ((!(cin >> usrInput)) || ((usrInput != 'y') && (usrInput != 'n')))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid input please try again: ";
+	}
+
+	if (usrInput == 'y')
+		return true;
+	else
+		return false;
+}
+
+bool playBlackjack()
+{
 	std::array <Card, 52> cardArray = generateDeck();
-
-	printDeck(cardArray);
-
-	// set random seed
-	std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
 	// start with shuffled deck
 	shuffleDeck(cardArray);
@@ -297,13 +310,73 @@ int main()
 
 	// Create two integers to hold the player's 
 	// and dealer's total score so far
-	int playerScore = 0;
-	int dealerScore = 0;
+	int dealerScore = getCardValue(*cardPtr++);
+	// player start with two cards
+	int playerScore = getCardValue(*cardPtr++);
+	playerScore += getCardValue(*cardPtr++);
+
+	// print scores
+	std::cout << "Your card score is " << playerScore << '\n';
+	std::cout << "Dealer's card score is " << dealerScore << '\n';
 
 	// player's turn
+	while (playerScore < 21 && hit())
+	{
+		playerScore += getCardValue(*cardPtr++);
+
+		// if player go burst then he immediately lose
+		if (playerScore > 21)
+		{
+			std::cout << "you have gone bust.\n";
+			return false;
+		}
+
+		std::cout << "Your card score is " << playerScore << '\n';
+	}
+
+	// dealer's turn
+	while (dealerScore < 17)
+	{
+		dealerScore += getCardValue(*cardPtr++);
+
+		// if dealer go bust then player wins
+		if (dealerScore > 21)
+		{
+			std::cout << "Dealer has gone bust.\n";
+			return true;
+		}
+
+		std::cout << "Dealer's card score is " << dealerScore << '\n';
+	}
+
+	// if none went bust then compare the scores
+	if (playerScore > dealerScore)
+		return true;
+	else
+		return false; // tie is considered to be dealer win
+}
 
 
 
+
+int main()
+{
+	
+
+	// set random seed
+	std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+	bool result = playBlackjack();
+
+	if (result)
+	{
+		std::cout << "You win! \n";
+	}
+	else
+	{
+		std::cout << "You lose! \n";
+	}
+	
 
 	return 0;
 }
