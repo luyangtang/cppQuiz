@@ -9,6 +9,7 @@
 #include <iostream>
 #include "pair.h"
 
+
 void testPair1()
 {
     Pair1<int> p1(5, 8);
@@ -28,9 +29,21 @@ void testPair()
     std::cout << "Pair: " << p2.first() << ' ' << p2.second() << '\n';
 }
 
+
+void testStringValuePair()
+{
+    StringValuePair<int> svp("Hello", 5);
+    std::cout << "Pair: " << svp.first() << ' ' << svp.second() << '\n';
+}
+
+
+
+
 int main()
 {
     
-    testPair1();
+    testStringValuePair();
+    
     return 0;
+    
 }

@@ -6,14 +6,15 @@
 //  Copyright © 2019 Kiki Tan. All rights reserved.
 //
 
+#include <iostream>
 #ifndef pair_h
 #define pair_h
 
 
-template <typename T>
+template <class T>
 class Pair1
 {
-private:
+protected:
     T p1;
     T p2;
     
@@ -31,12 +32,11 @@ public:
     const T & second() const;
 };
 
-void testPair1();
 
 
-template <typename T1, typename T2>
+template <class T1, class T2>
 class Pair{
-private:
+protected:
     T1 p1;
     T2 p2;
 
@@ -56,5 +56,18 @@ public:
 };
 
 
+
+template <class T2>
+class StringValuePair: public Pair<std::string, T2>{
+    
+public:
+    // constructor
+    StringValuePair(std::string _p1, T2 _p2) :Pair<std::string, T2>(_p1, _p2){}
+};
+
+
+void testPair1();
+
+void testPair();
 
 #endif /* pair_h */
