@@ -12,3 +12,6 @@
 
 template class Pair1<int>;
 template class Pair1<double>;
+
+template class Pair<int, double>;
+template class Pair<double,int>;

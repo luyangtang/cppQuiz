@@ -31,6 +31,30 @@ public:
     const T & second() const;
 };
 
+void testPair1();
+
+
+template <typename T1, typename T2>
+class Pair{
+private:
+    T1 p1;
+    T2 p2;
+
+public:
+
+    // constructor
+    Pair (T1 _p1, T2 _p2);
+
+    // member functions
+    T1 &first();
+
+    T2 &second();
+
+    const T1 &first() const;
+
+    const T2 &second() const;
+};
+
 
 
 #endif /* pair_h */

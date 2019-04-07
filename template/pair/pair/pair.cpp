@@ -38,3 +38,41 @@ const T &Pair1<T>::second() const
 {
     return p2;
     }
+
+
+
+
+
+template <typename T1, typename T2>
+Pair<T1,T2>::Pair(T1 _p1, T2 _p2): p1(_p1), p2(_p2)
+{};
+
+// member functions
+template <typename T1, typename T2>
+T1 &Pair<T1,T2>::first()
+{
+    return p1;
+}
+
+template <typename T1, typename T2>
+T2 &Pair<T1,T2>::second()
+{
+    return p2;
+}
+
+template <typename T1, typename T2>
+const T1 &Pair<T1,T2>::first() const
+{
+    return p1;
+
+}
+
+template <typename T1, typename T2>
+const T2 &Pair<T1,T2>::second() const
+{
+    return p2;
+
+}
+
+
+
