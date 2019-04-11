@@ -3,6 +3,11 @@
 #include "Point2d.h"
 #include "HelloWorld.h"
 #include "question1.h"
+#include "MonsterGenerator.h"
+#include "Deck.h"
+#include "blackJack.h"
+#include <ctime> // for time()
+#include <cstdlib> // for rand() and srand()
 
 void question1a()
 {
@@ -37,4 +42,30 @@ void question2()
 {
   HelloWorld hello;
   hello.print();
+}
+
+
+void question3()
+{
+  srand(static_cast<unsigned int>(time(0))); // set initial seed value to system clock
+	rand(); // If using Visual Studio, discard first random value
+ 
+	Monster m = MonsterGenerator::generateMonster();
+	m.print();
+  
+}
+
+
+void question4()
+{
+  srand(static_cast<unsigned int>(time(0))); // set initial seed value to system clock
+	rand(); // If using Visual Studio, discard first random value
+ 
+	Deck deck;
+	deck.shuffleDeck();
+
+  if(playBlackjack(deck))
+    std::cout << "You win!\n";
+  else
+		std::cout << "You lose!\n";
 }

@@ -9,5 +9,8 @@ void question1c();
 
 void question2();
 
+void question3();
+
+void question4();
 
 #endif

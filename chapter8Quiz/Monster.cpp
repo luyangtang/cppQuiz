@@ -1,9 +1,10 @@
 #include "Monster.h"
 #include <string>
+#include <iostream>
 
 void Monster::print()
 {
-  std::cout << m_name << "the " << this->getTypeString() << " has " << m_hitPoints << " hit points and says *" << m_roar << "*\n";
+  std::cout << m_name << " the " << this->getTypeString() << " has " << m_hitPoints << " hit points and says *" << m_roar << "*\n";
 }
 
 std::string Monster::getTypeString()
