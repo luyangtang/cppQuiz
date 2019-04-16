@@ -1,26 +1,25 @@
 #include <iostream>
-#include "Average.h"
+#include "FixedPoint2.h"
 
-int main() {
-  	Average avg;
-	
-	avg += 4;
-	std::cout << avg << '\n'; // 4 / 1 = 4
-	
-	avg += 8;
-	std::cout << avg << '\n'; // (4 + 8) / 2 = 6
  
-	avg += 24;
-	std::cout << avg << '\n'; // (4 + 8 + 24) / 3 = 12
+int main()
+{
+	FixedPoint2 a(34, 56);
+	std::cout << a << '\n';
  
-	avg += -10;
-	std::cout << avg << '\n'; // (4 + 8 + 24 - 10) / 4 = 6.5
+	FixedPoint2 b(-2, 8);
+	std::cout << b << '\n';
  
-	(avg += 6) += 10; // 2 calls chained together
-	std::cout << avg << '\n'; // (4 + 8 + 24 - 10 + 6 + 10) / 6 = 7
+	FixedPoint2 c(2, -8);
+	std::cout << c << '\n';
  
-	Average copy = avg;
-	std::cout << copy << '\n';
+	FixedPoint2 d(-2, -8);
+	std::cout << d << '\n';
+ 
+	FixedPoint2 e(0, -5);
+	std::cout << e << '\n';
+ 
+	// std::cout << static_cast<double>(e) << '\n';
  
 	return 0;
 }

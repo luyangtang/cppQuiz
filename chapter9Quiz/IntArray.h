@@ -25,33 +25,15 @@ public:
   }
 
   // overload [] operator
-  int operator[](int _i);
+  int& operator[](const int _i);
+
+  // overload = operator
+  IntArray& operator=(const IntArray &a);
 
   // cout
-  friend std::ostream& operator<<(std::ostream out, const IntArray &intarr);
+  friend std::ostream& operator<<(std::ostream &out, const IntArray &intarr);
 };
 
 
-int operator[](int _i)
-  {
-    assert((_i < size) && (_i >= 0));
-    return arr[_i];
-  }
-
-
-IntArray& operator=(int _val)
-{
-  arr[]
-}
-
-
-std::ostream& operator<<(std::ostream out, const IntArray &intarr)
-{
-  for (int i = 0; i < intarr.size; i++)
-  {
-    out << intarr.arr[i] << ' ';
-  }
-  return out;
-}
 
 #endif
