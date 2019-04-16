@@ -1,25 +1,21 @@
 #include <iostream>
 #include "FixedPoint2.h"
 
+
  
 int main()
 {
-	FixedPoint2 a(34, 56);
+	testAddition();
+ 
+	FixedPoint2 a(-0.48); 
 	std::cout << a << '\n';
  
-	FixedPoint2 b(-2, 8);
-	std::cout << b << '\n';
+	std::cout << -a << '\n';
  
-	FixedPoint2 c(2, -8);
-	std::cout << c << '\n';
- 
-	FixedPoint2 d(-2, -8);
-	std::cout << d << '\n';
- 
-	FixedPoint2 e(0, -5);
-	std::cout << e << '\n';
- 
-	// std::cout << static_cast<double>(e) << '\n';
+	std::cout << "Enter a number: "; // enter 5.678
+	std::cin >> a;
+	
+	std::cout << "You entered: " << a << '\n';
  
 	return 0;
 }

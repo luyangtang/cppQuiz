@@ -2,7 +2,9 @@
 #define FIXEDPOINT2_H
 
 #include <iostream>
+#include <assert.h>
 #include <cstdint> // for fixed width integers
+#include <cmath>
 
 class FixedPoint2
 {
@@ -13,27 +15,27 @@ private:
 public:
 
   // constructor
-  FixedPoint2(std::int16_t _base = 0, std::int8_t _decimal = 0)
-    : m_base(_base), m_decimal(_decimal)
-    {}
+  FixedPoint2(std::int16_t _base = 0, std::int8_t _decimal = 0);
+
+  // constructor that takes a double
+  FixedPoint2(double _dbl);
 
   // overload <<
   friend std::ostream& operator<< (std::ostream &out, const FixedPoint2 &fp);
   
+  // overload type
+  operator double() const;
 
+  //Overload operator==, operator >>, operator- (unary), and operator+ (binary).
+  bool operator==(const FixedPoint2 &fp);
+
+  friend std::istream& operator>>(std::istream &in, FixedPoint2 &fp);
+
+  FixedPoint2 operator-();
+
+  FixedPoint2 operator+(const FixedPoint2 &fp);
 };
 
-
-
-std::ostream& operator<< (std::ostream &out, const FixedPoint2 &fp)
-{
-  if (fp.m_base < 0 || fp.m_decimal < 0)
-  {
-    out << '-';
-  }
-  out << fp.m_base << '.' << fp.m_decimal;
-
-  return out;
-}
+void testAddition();
 
 #endif
