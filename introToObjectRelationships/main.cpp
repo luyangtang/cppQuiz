@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Department.h"
+#include "IntArray.h"
 
 int main() {
   
-  test();
+  testIntArray();
  
   return 0;
 }
