@@ -1,9 +1,6 @@
-#include <iostream>
-#include "IntArray.h"
+
+#include "questions.h"
 
 int main() {
-  
-  testIntArray();
- 
-  return 0;
+  testFruit();
 }
