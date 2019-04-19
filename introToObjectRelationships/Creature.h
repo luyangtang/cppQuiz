@@ -9,7 +9,7 @@ class Creature
 {
   // A name (std::string), a symbol (a char), an amount of health (int), the amount of damage they do per attack (int), and the amount of gold they are carrying (int)
 
-private:
+protected:
   std::string m_name;
   char m_symbol;
   int m_health;
@@ -19,7 +19,7 @@ private:
 public:
 
   // constructor
-  Creature(std::string _name, char _symbol, int _health, int _attack, int _gold)
+  Creature(std::string _name, char _symbol = 0, int _health = 0, int _attack = 0, int _gold = 0)
     :m_name(_name), m_symbol(_symbol), m_health(_health), m_attack(_attack), m_gold(_gold)
     {}
 
