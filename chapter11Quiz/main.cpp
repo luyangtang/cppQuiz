@@ -1,9 +1,10 @@
 #include <iostream>
-#include "Monster.h"
+#include "game.h"
 
 int main() 
 {
-	testMonster();
+	
+  play();
  
 	return 0;
 }

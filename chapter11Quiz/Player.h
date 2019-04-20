@@ -32,7 +32,18 @@ public:
 
   // has won
   bool hasWon();
+
+  // collect gold
+  void collectGold(int _gold);
+
+  // increase damage
+  void damageUp();
 };
+
+void Player::damageUp()
+{
+  m_attack++;
+}
 
 bool Player::hasWon()
 {
@@ -42,6 +53,11 @@ bool Player::hasWon()
 int Player::getLevel()
 {
   return m_level;
+}
+
+void Player::collectGold(int _gold)
+{
+  m_gold += _gold;
 }
 
 

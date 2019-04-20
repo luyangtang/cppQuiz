@@ -35,12 +35,29 @@ public:
   // get symbol
   char getSymbol();
 
+  // get attack
+  int getAttack();
+
   // add gold
   void addGold(int _gold);
 
   // reduce health
   void reduceHealth(int _health);
+
+  // is dead
+  bool isDead();
 };
+
+
+bool Creature::isDead()
+{
+  return m_health >= 0;
+}
+
+int Creature::getAttack()
+{
+  return m_attack;
+}
 
 void Creature::reduceHealth(int _health)
 {
