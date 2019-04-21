@@ -94,7 +94,10 @@ Monster::Monster(Monster::Type _type)
 
 Monster Monster::getRandomMonster()
 {
-  return Monster(static_cast<Monster::Type>(getRandomNumber(0, Monster::MAX_TYPES)));
+  Monster m(static_cast<Monster::Type>(getRandomNumber(0, Monster::MAX_TYPES - 1)));
+
+  std::cout << "You have encountered a " << m.getName() << '\n';
+  return m;
 }
 
 

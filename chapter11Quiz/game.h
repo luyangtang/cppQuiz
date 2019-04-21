@@ -17,10 +17,15 @@ void fightMonster(char playerAction, Monster &m, Player &o);
 void play();
 
 //attackMonster() handles the player attacking the monster, including leveling up.
-void attackMonster(Monster &m, Player o);
+void attackMonster(Monster &m, Player &o);
 
 //attackPlayer() handles the monster attacking the player.
 void attackPlayer(Monster &m, Player &o);
+
+
+
+
+
 
 char getPlayerAction()
 {
@@ -28,11 +33,11 @@ char getPlayerAction()
   char action = 0;
 
   std::cin >> action;
-  // while(action != 'r' || action != 'f')
-  // {
+  while(action != 'r' && action != 'f' && action != 'R' && action != 'F')
+  {
     std::cout << "Invalid input. (R)un or (F)ight: ";
     std::cin >> action;
-  // }
+  }
   
   std::cout << '\n';
   return action;
@@ -51,9 +56,11 @@ void fightMonster(char playerAction, Monster &m, Player &o)
     if (escaped)
     {
       // jump to the next round
+      std::cout << "You have escaped.\n";
     }
     else
     {
+      std::cout << "You did not manage to escape.\n";
       attackPlayer(m,o);
     }
   }
@@ -70,11 +77,11 @@ void attackPlayer(Monster &m, Player &o)
 {
     // free attack from monster
   o.reduceHealth(m.getAttack());
-  std::cout << m.getName() << " hit you by " << m.getAttack() << "damage.\n";
+  std::cout << m.getName() << " hit you by " << m.getAttack() << " damage.\n";
 }
 
 
-void attackMonster(Monster &m, Player o)
+void attackMonster(Monster &m, Player &o)
 {
   // player attacks first 
   m.reduceHealth(o.getAttack());
@@ -118,11 +125,12 @@ void play()
   Monster m = Monster::getRandomMonster();
 
   // get user input
-  char action = getPlayerAction();
+  char action;
 
   // fight monster
-  while(o.getLevel() < 20 || o.getHealth() > 0)
+  while(o.getLevel() < 20 && o.getHealth() > 0)
   {
+    action = getPlayerAction();
     fightMonster(action, m, o);
   }
 
