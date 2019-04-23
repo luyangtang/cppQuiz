@@ -1,14 +1,10 @@
 #include <iostream>
-#include <string>
-#include "Apple.h"
-#include "Banana.h"
+#include "game.h"
 
-int main() {
-  Apple a("red");
-	Banana b;
-	GrannySmith c;
+int main() 
+{
+	
+  play();
  
-	std::cout << "My " << a.getName() << " is " << a.getColour() << ".\n";
-	std::cout << "My " << b.getName() << " is " << b.getColour() << ".\n";
-	std::cout << "My " << c.getName() << " is " << c.getColour() << ".\n";
+	return 0;
 }
