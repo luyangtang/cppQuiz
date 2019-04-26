@@ -19,9 +19,9 @@ public:
       if (m_denominator == 0)
         throw std::runtime_error("Denominator cannot be 0");
     }
-    catch(std::except &except)
+    catch(std::exception &except)
     {
-      std::
+      std::cerr << except.what();
     }
 
   friend std::ostream& operator<<(std::ostream &out, const Fraction &f);
